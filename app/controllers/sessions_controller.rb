@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
 
   def facebook
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.uid = auth['uid']
+      u.password = 'Temporary'
       u.name = auth['info']['name']
       u.email = auth['info']['email']
     end
-
     log_in @user
-
     redirect_to user_workouts_path(@user)
   end
 
