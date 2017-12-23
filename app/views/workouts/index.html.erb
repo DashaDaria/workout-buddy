@@ -8,9 +8,19 @@
 <%= link_to "Exercise List", exercises_path %>
 
 <h2>Your Workouts:</h2>
-<% @workouts.each do |workout| %>
-  <%=workout.name%>
-  <%=workout.status%>
-  <%=workout.intensity%>
-  <%=workout.duration%>
-<%end%>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Intensity</th>
+    <th>Duration</th>
+  </tr>
+  <tr>
+    <% @workouts.each do |workout| %>
+      <%=workout.name%>
+      <%=workout.status%>
+      <%=workout.intensity%>
+      <%=workout.duration%>
+      <%end%>
+  </tr>
+</table>
