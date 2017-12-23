@@ -5,7 +5,7 @@ class CreateExercises < ActiveRecord::Migration[5.1]
       t.integer :category_id
       t.integer :difficulty
       t.text :how
-      t.insteger :length
+      t.integer :length
 
       t.timestamps
     end
