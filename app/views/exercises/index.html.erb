@@ -1,5 +1,7 @@
 <h1>Exercise List</h1>
 
-<% @exercises.each do |e| %>
-<%= e.name %>
-<%end%>
+<ol>
+  <% @exercises.each do |e| %>
+  <li><%= link_to e.name, e %> - <%=e.category.name%></li>
+  <%end%>
+</ol>
