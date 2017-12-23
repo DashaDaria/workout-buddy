@@ -1,13 +1,5 @@
 class UsersController < ApplicationController
 
-  def show
-    if current_user
-      @user = User.new
-    else
-      redirect_to signup_path
-    end
-  end
-
   def new
     @user = User.new
   end
