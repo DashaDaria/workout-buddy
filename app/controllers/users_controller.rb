@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      flash[:notice] = "Thank you for signing up!"
+      log_in @user
+      flash[:success] = "Thank you for signing up!"
       redirect_to user_workouts_path(@user)
     else
-      flash[:alert] = "Input not valid"
-      redirect_to signup_path
+      flash.now[:danger] = "Input not valid"
+      render 'new'
     end
   end
 
