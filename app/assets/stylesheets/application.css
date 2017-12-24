@@ -28,3 +28,10 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
