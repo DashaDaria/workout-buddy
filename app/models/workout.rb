@@ -14,4 +14,8 @@ class Workout < ApplicationRecord
     end
   end
 
+  def duration 
+    self.exercises.map {|e| e.length}.sum
+  end
+
 end

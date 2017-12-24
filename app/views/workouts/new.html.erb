@@ -1,7 +1,20 @@
 <h1>New Workout</h1>
 
 <%=form_for @workout, url:new_user_workout_path do |f|%>
-<%=f.label :name%>
-<%=f.text_field :name%>
+
+  <p><%=f.text_field :name, placeholder: "Name your workout"%></p>
+  <p>Completed? <%=f.check_box :status%></p>
+
+<p>Choose an existing exercise or create your own:</p>
+
+<h2>New Exercise</h2>
+<%= f.fields_for :exercises do |attr| %>
+<p><%=attr.text_field :name, placeholder: "Exercise Name"%></p>
+<p><%=attr.number_field :difficulty, placeholder: "Difficulty (1-3)"%></p>
+<p><%=attr.number_field :length, placeholder: "Length in sec"%></p>
+<p><%=attr.text_area :how, placeholder: "Instructions"%></p>
+<%end%>
+
+
 <%= f.submit %>
 <%end%>
