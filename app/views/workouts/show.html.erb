@@ -1,7 +1,8 @@
 <h1><%=@workout.name.upcase%> - <%=@workout.intensity%> - <%=@workout.duration%> sec</h1>
-
+<h2>Exercises</h2>
 <table>
   <tr>
+    <th>Name</th>
     <th>Category</th>
     <th>Difficulty</th>
     <th>Length</th>
@@ -9,6 +10,7 @@
   </tr>
   <tr>
     <%@exercises.each do |e|%>
+      <td><%=link_to e.name, exercise_path(e)%></td>
       <td><%=link_to e.category.name, category_path(e.category)%></td>
       <td><%=e.difficulty%></td>
       <td><%=e.length%></td>
@@ -16,3 +18,6 @@
   </tr>
       <%end%>
 </table>
+
+<p><%=link_to "Edit Workout", edit_user_workout_path%></p>
+<p><%=link_to "Delete Workout", user_workout_path, method: delete %></p>

@@ -1,0 +1,12 @@
+<h1>Edit Workout</h1>
+
+<%=form_for(@workout, url: user_workout_path(@workout)) do |f|%>
+
+  <p><%=f.text_field :name, placeholder: "Name your workout"%></p>
+
+
+<p>Choose an existing exercise or create your own:</p>
+
+
+<%= f.submit %>
+<%end%>
