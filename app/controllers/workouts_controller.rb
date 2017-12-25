@@ -32,10 +32,9 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    @workout = Workout.new(workout_params)
-    binding.pry
+    @workout = Workout.find(params[:id])
     @workout.user_id = current_user.id
-    if @workout.save
+    if @workout.update(workout_params)
       redirect_to user_workouts_path
     else
       flash[:notice] = "cannot save, try again"
@@ -46,7 +45,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout = Workout.find(params[:id])
     @workout.destroy
-    flash[:notice] = "successfully deleted"
+    flash[:notice] = "Workout successfully deleted"
     redirect_to user_workouts_path
   end
 
