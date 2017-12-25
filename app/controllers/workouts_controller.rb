@@ -5,20 +5,23 @@ class WorkoutsController < ApplicationController
     @workouts = @user.workouts
   end
 
+  def show
+    @workout = Workout.find(params[:id])
+  end
+
   def new
     @workout = Workout.new
     @exercises = Exercise.all
   end
 
   def create
-    @user = current_user
     @workout = Workout.new(workout_params)
-    @workout.user_id = @user.id
+    @workout.user_id = current_user.id
     if @workout.save
-    redirect_to user_workouts_path
-  else
-    render 'new'
-  end
+      redirect_to user_workouts_path
+    else
+      render 'new'
+    end
   end
 
 

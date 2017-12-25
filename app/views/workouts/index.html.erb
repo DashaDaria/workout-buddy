@@ -17,12 +17,12 @@
   </tr>
   <tr>
     <% @workouts.each do |workout| %>
-      <%=workout.name%>
-      <%=workout.status%>
-      <%=workout.intensity%>
-      <%=workout.duration%>
-      <%end%>
+      <td><%=link_to workout.name, user_workout_path(current_user, workout)%></td>
+      <td><%=workout.status%></td>
+      <td><%=workout.intensity%></td>
+      <td><%=workout.duration%></td>
   </tr>
+      <%end%>
 </table>
 
 <%= link_to "New Workout", new_user_workout_path%>
