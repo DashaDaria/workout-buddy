@@ -1,1 +1,18 @@
-<%=@workout.name%>
+<h1><%=@workout.name.upcase%> - <%=@workout.intensity%> - <%=@workout.duration%> sec</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Difficulty</th>
+    <th>Length</th>
+    <th>Instruction</th>
+  </tr>
+  <tr>
+    <%@exercises.each do |e|%>
+      <td><%=link_to e.category.name, category_path(e.category)%></td>
+      <td><%=e.difficulty%></td>
+      <td><%=e.length%></td>
+      <td><%=e.how%></td>
+  </tr>
+      <%end%>
+</table>
