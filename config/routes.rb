@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :exercises
 
-  resources :categories, only: [:show] do
+  resources :categories, only: [:index] do
     resources :exercises, only: [:index]
   end
 

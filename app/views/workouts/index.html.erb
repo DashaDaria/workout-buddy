@@ -1,8 +1,8 @@
 <h1>Welcome, <%= @user.name%></h1>
 
 <h2>Track Your Progress</h2>
-<p>Workouts completed:</p>
-<p>Favorite workout:</p>
+<p>Workouts completed: <%=@user.workouts.count{|w| w.status == "completed"}%></p>
+<p>Favorite exercise:</p>
 
 <%= link_to "Log out", logout_path, method: :delete %>
 <%= link_to "Exercise List", exercises_path %>
@@ -25,4 +25,4 @@
       <%end%>
 </table>
 
-<%= link_to "New Workout", new_user_workout_path%>
+<p><%= link_to "New Workout", new_user_workout_path%></p>
