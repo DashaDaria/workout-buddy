@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users do
-    resources :workouts
+    resources :workouts, only: [:index, :new, :create], controller: 'users/workouts'
   end
+
+  resources :workouts, only: [:show, :update, :destroy, :edit]
 
   resources :exercises
 

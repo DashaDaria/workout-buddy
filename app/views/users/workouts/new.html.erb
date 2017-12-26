@@ -1,7 +1,6 @@
+<h1>New Workout</h1>
 <%=form_for(@workout, url: user_workouts_path) do |f|%>
-
-  <p><%=f.text_field :name, placeholder: "Name your workout"%></p>
-
+<p><%=f.text_field :name, placeholder: "Name your workout"%></p>
 
 <p>Choose an existing exercise or create your own:</p>
 
@@ -9,4 +8,5 @@
 
 
 <%= f.submit %>
+
 <%end%>

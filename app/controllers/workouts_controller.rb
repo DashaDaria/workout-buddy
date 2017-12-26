@@ -1,29 +1,8 @@
 class WorkoutsController < ApplicationController
 
-  def index
-    @user = current_user
-    @workouts = @user.workouts
-  end
-
   def show
     @workout = Workout.find(params[:id])
     @exercises = @workout.exercises
-  end
-
-  def new
-    @workout = Workout.new
-    @exercises = Exercise.all
-  end
-
-  def create
-    @workout = Workout.new(workout_params)
-    @workout.user_id = current_user.id
-    if @workout.save
-      redirect_to user_workouts_path
-    else
-      flash[:notice] = "cannot save, try again"
-      render 'new'
-    end
   end
 
   def edit
@@ -35,7 +14,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     @workout.user_id = current_user.id
     if @workout.update(workout_params)
-      redirect_to user_workouts_path
+      redirect_to user_workouts_path(current_user)
     else
       flash[:notice] = "cannot save, try again"
       render 'new'
