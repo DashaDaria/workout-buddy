@@ -23,7 +23,7 @@ class Users::WorkoutsController < ApplicationController
 
 private
   def workout_params
-  params.require(:workout).permit(:name,:checkbox_value, :exercise_ids => [])
+  params.require(:workout).permit(:name, :completed, :exercise_ids => [])
   end
 
 end

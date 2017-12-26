@@ -10,6 +10,14 @@ class Workout < ApplicationRecord
     end
   end
 
+  def status
+    if self.completed == false
+      "not completed"
+    else
+      "completed"
+    end
+  end
+
   def intensity
     level = self.exercises.map {|e| e.difficulty }.sum
     if level <= 3

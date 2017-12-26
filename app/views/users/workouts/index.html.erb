@@ -18,7 +18,7 @@
   <tr>
     <% @workouts.each do |workout| %>
       <td><%=link_to workout.name, workout_path(workout)%></td>
-      <td><%=workout.completed%></td>
+      <td><%=workout.status%></td>
       <td><%=workout.intensity%></td>
       <td><%=workout.duration%></td>
   </tr>
