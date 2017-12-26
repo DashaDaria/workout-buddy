@@ -11,20 +11,26 @@ class Users::WorkoutsController < ApplicationController
   end
 
   def create
-
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
       redirect_to user_workouts_path
     else
-      flash[:notice] = "cannot save, try again"
+      flash[:notice] = "Cannot save, fix errors:"
       render 'new'
     end
   end
 
 private
   def workout_params
-  params.require(:workout).permit(:name, :completed, :exercise_ids => [])
+  params.require(:workout).permit(:name, :completed, :exercise_ids => [],
+    exercises_attributes: [
+      :name,
+      :length,
+      :difficulty,
+      :category_id,
+      :how
+    ])
   end
 
 end
