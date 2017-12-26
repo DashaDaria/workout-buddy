@@ -17,7 +17,7 @@ class Workout < ApplicationRecord
                 e.name
               end
             end
-    e_array.max_by {|e| e_array.count(e)}.join('')
+    e_array.max_by {|e| e_array.count(e)}.join(', ')
   end
 
   def status
