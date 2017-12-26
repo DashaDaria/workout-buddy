@@ -16,7 +16,7 @@ class WorkoutsController < ApplicationController
     if @workout.update(workout_params)
       redirect_to user_workouts_path(current_user)
     else
-      flash[:notice] = "cannot save, try again"
+      flash[:notice] = "Cannot save, fix errors:"
       render 'new'
     end
   end
