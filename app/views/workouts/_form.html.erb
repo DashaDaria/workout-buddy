@@ -5,6 +5,8 @@
 
 <p>Choose an existing exercise or create your own:</p>
 
+<p><%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%></p>
+
 
 <%= f.submit %>
 <%end%>
