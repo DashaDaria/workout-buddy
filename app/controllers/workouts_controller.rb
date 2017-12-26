@@ -25,7 +25,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     @workout.destroy
     flash[:notice] = "Workout successfully deleted"
-    redirect_to user_workouts_path
+    redirect_to user_workouts_path(current_user)
   end
 
 private

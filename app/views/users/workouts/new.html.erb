@@ -8,8 +8,9 @@ Completed? <%=f.check_box :completed%>
 <%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%>
 
 <h3>Or create your own:</h3>
+
   <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
-  <%=e_fields.text_field :name, placeholder: "Name your exercise" %><br><br>
+    <%=e_fields.text_field :name, placeholder: "Name your exercise" %><br><br>
   <%end%>
 
 <%= f.submit %>
