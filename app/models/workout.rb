@@ -2,7 +2,7 @@ class Workout < ApplicationRecord
   belongs_to :user
   has_many :workout_exercises
   has_many :exercises, through: :workout_exercises
-  validates :name, presence: true 
+  validates :name, presence: true
 
   # def exercises_attributes=(e_hashes)
   #   e_hashes.values.each do |e_attributes|
@@ -16,11 +16,7 @@ class Workout < ApplicationRecord
   # end
 
   def status
-    if self.completed == false
-      "not completed"
-    else
-      "completed"
-    end
+    self.completed ? "completed" : "not completed"
   end
 
   def intensity
