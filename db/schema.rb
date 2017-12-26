@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171222094530) do
 
   create_table "workouts", force: :cascade do |t|
     t.string "name"
-    t.string "status", default: "not completed"
+    t.boolean "completed", default: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

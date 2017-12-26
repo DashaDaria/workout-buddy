@@ -1,7 +1,7 @@
 <h1>Welcome, <%= @user.name%></h1>
 
 <h2>Track Your Progress</h2>
-<p>Workouts completed: <%=@user.workouts.count{|w| w.status == "completed"}%></p>
+<p>Workouts completed: <%=@user.workouts.count{|w| w.completed == true}%></p>
 <p>Favorite exercise:</p>
 
 <%= link_to "Log out", logout_path, method: :delete %>
@@ -18,7 +18,7 @@
   <tr>
     <% @workouts.each do |workout| %>
       <td><%=link_to workout.name, workout_path(workout)%></td>
-      <td><%=workout.status%></td>
+      <td><%=workout.completed%></td>
       <td><%=workout.intensity%></td>
       <td><%=workout.duration%></td>
   </tr>
