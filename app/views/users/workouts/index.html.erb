@@ -2,7 +2,7 @@
 
 <h2>Track Your Progress</h2>
 <p>Workouts completed: <%=@user.workouts.count{|w| w.completed == true}%></p>
-<p>Favorite exercise:</p>
+<p>Favorite exercise: <%= @user.workouts.favorite_exercise%></p>
 
 <%= link_to "Log out", logout_path, method: :delete %>
 <%= link_to "Exercise List", exercises_path %>

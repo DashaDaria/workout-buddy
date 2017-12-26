@@ -15,6 +15,15 @@ class Workout < ApplicationRecord
   #   end
   # end
 
+  def self.favorite_exercise
+    e_array = Workout.all.map do |workout|
+              workout.exercises.map do |e|
+                e.name
+              end
+            end
+    e_array.max_by {|e| e_array.count(e)}.join('')
+  end
+
   def status
     self.completed ? "completed" : "not completed"
   end
