@@ -6,14 +6,12 @@
   </ul>
 <% end %>
 
-<h1>New User</h1>
-<%= form_for(:user, url: signup_path) do |f|%>
-
-<p><%= f.text_field :name, placeholder: "Your name" %></p>
-
-<p><%= f.email_field :email, placeholder: "Email" %></p>
-
-<p><%= f.password_field :password, placeholder: "Password" %></p>
-
-<%= f.submit "Sign up" %><br>
-<%end%>
+  <h1>New User</h1>
+    <%= form_for(:user, url: signup_path) do |f|%>
+    <%= f.text_field :name, placeholder: "Your name" %><br><br>
+    <%= f.email_field :email, placeholder: "Email" %><br><br>
+    <%= f.password_field :password, placeholder: "Password" %><br><br>
+    <%= f.submit "Sign up" %><br>
+  <%end%>
+  
+<p>Or log in with <%= link_to('Facebook!', '/auth/facebook')%></p>
