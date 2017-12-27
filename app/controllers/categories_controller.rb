@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  def index
+  def show
     @category = Category.find(params[:id])
     @exercises = @category.exercises
   end

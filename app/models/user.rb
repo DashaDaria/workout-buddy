@@ -12,7 +12,8 @@ class User < ApplicationRecord
                 e.name
               end
             end
-            e_array.max_by {|e| e_array.count(e)}.join(", ")
+        names_only = e_array.flatten
+        names_only.max_by {|e| e_array.count(e)}
     else
       "no favorites yet!"
     end
