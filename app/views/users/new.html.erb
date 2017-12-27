@@ -1,11 +1,19 @@
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>New User</h1>
 <%= form_for(:user, url: signup_path) do |f|%>
 
-<p><%= f.text_field :name, placeholder: (@user.errors.full_messages_for(:name).first || "Your name") %></p>
+<p><%= f.text_field :name, placeholder: "Your name" %></p>
 
-<p><%= f.email_field :email, placeholder: (@user.errors.full_messages_for(:email).first || "Email") %></p>
+<p><%= f.email_field :email, placeholder: "Email" %></p>
 
-<p><%= f.password_field :password, placeholder: (@user.errors.full_messages_for(:password).first || "Password") %></p>
+<p><%= f.password_field :password, placeholder: "Password" %></p>
 
 <%= f.submit "Sign up" %><br>
 <%end%>
