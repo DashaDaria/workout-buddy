@@ -7,26 +7,20 @@
 <% end %>
 
 <h1>Edit Workout</h1>
-<%=form_for(@workout, url: workout_path(@workout)) do |f|%>
-<p><%=f.text_field :name, placeholder: "Name your workout"%></p>
-Completed? <%=f.check_box :completed%>
+  <%=form_for(@workout, url: workout_path(@workout)) do |f|%>
+    <p><%=f.text_field :name, placeholder: "Name your workout"%></p>
+    Completed? <%=f.check_box :completed%>
 
 <h3>Add existing exercises:</h3>
-
-<%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%>
+  <%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%>
 
 <h3>Or create your own:</h3>
-
-  <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
-    <%=e_fields.text_field :name, placeholder: "Name your exercise" %>
-    <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
-    <%=e_fields.number_field :difficulty, placeholder: "How hard? (1-3)" %>
-    <%=e_fields.select :category_id, options_for_select([['upper body', 1.to_i], ['core', 2.to_i], ['lower body', 3], ['full body', 4]])%><br><br>
-    <%=e_fields.text_area :how, placeholder: "Instructions" %><br>
-
-
-  <%end%>
-
-<%= f.submit %>
-
+    <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
+      <%=e_fields.text_field :name, placeholder: "Name your exercise" %>
+      <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
+      <%=e_fields.number_field :difficulty, placeholder: "How hard? (1-3)" %>
+      <%=e_fields.select :category_id, options_for_select([['upper body', 1.to_i], ['core', 2.to_i], ['lower body', 3], ['full body', 4]])%><br><br>
+      <%=e_fields.text_area :how, placeholder: "Instructions" %><br>
+    <%end%>
+  <%= f.submit %>
 <%end%>

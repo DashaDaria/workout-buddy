@@ -9,8 +9,8 @@ class Workout < ApplicationRecord
 
   def exercises_attributes=(e_hashes)
     e_hashes.values.each do |e_attributes|
-    exercise = Exercise.find_or_create_by(e_attributes)
-    self.workout_exercises.build(:exercise => exercise)
+      exercise = Exercise.find_or_create_by(e_attributes)
+      self.workout_exercises.build(:exercise => exercise)
     end
   end
 

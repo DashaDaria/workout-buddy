@@ -1,13 +1,11 @@
 class Users::WorkoutsController < ApplicationController
 
   def index
-    @user = current_user
-    if params[:done] == "completed"
-      @workouts = @user.workouts.done
-    elsif params[:done] == "not completed"
-      @workouts = @user.workouts.not_done
+    if logged_in?
+      @user = current_user
+      filter_workouts_view
     else
-      @workouts = @user.workouts
+      redirect_to '/'
     end
   end
 
@@ -20,7 +18,7 @@ class Users::WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to user_workouts_path
+      redirect_to user_workouts_path(current_user)
     else
       flash[:notice] = "Cannot save, fix errors:"
       render 'new'
@@ -37,6 +35,16 @@ private
       :category_id,
       :how
     ])
+  end
+
+  def filter_workouts_view
+    if params[:done] == "completed"
+      @workouts = @user.workouts.done
+    elsif params[:done] == "not completed"
+      @workouts = @user.workouts.not_done
+    else
+      @workouts = @user.workouts
+    end
   end
 
 end
