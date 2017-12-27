@@ -1,11 +1,14 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to user_workouts_path(current_user)
+    else
+      @user = User.new
+    end
   end
 
   def create
-    # raise params.inspect
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
