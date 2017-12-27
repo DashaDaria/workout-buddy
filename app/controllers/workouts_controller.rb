@@ -17,7 +17,7 @@ class WorkoutsController < ApplicationController
       redirect_to user_workouts_path(current_user)
     else
       flash[:notice] = "Cannot save, fix errors:"
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -29,8 +29,15 @@ class WorkoutsController < ApplicationController
   end
 
 private
-  def workout_params
-  params.require(:workout).permit(:name, :completed, :exercise_ids => [])
-  end
+    def workout_params
+    params.require(:workout).permit(:name, :completed, :exercise_ids => [],
+      exercises_attributes: [
+        :name,
+        :length,
+        :difficulty,
+        :category_id,
+        :how
+      ])
+    end
 
 end

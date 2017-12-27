@@ -2,7 +2,13 @@ class Users::WorkoutsController < ApplicationController
 
   def index
     @user = current_user
-    @workouts = @user.workouts
+    if params[:done].downcase == "completed".downcase
+      @workouts = @user.workouts.done
+    elsif params[:done].downcase == "not completed".downcase
+      @workouts = @user.workouts.not_done
+    else
+      @workouts = @user.workouts
+    end
   end
 
   def new

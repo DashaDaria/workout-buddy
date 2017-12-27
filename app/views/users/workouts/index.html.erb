@@ -2,12 +2,20 @@
 
 <h2>Track Your Progress</h2>
 <p>Workouts completed: <%=@user.workouts.count{|w| w.completed == true}%></p>
-<p>Favorite exercise(s): <%= @user.favorite_exercise if @user.workouts%></p>
+<p>Favorite exercise(s): <%= @user.favorite_exercise%></p>
 
 <%= link_to "Log out", logout_path, method: :delete %>
 <%= link_to "Exercise List", exercises_path %>
 
+
+
 <h2>Your Workouts:</h2>
+<%=form_tag(user_workouts_path(current_user), method: 'get') do%>
+<%= label_tag "Filter by:" %>
+<%= select_tag :done, options_for_select([['Completed'],['Not Completed']]), {include_blank: true}%>
+<%= submit_tag "Filter"%><br><br>
+<%end%>
+
 <table>
   <tr>
     <th>Name</th>

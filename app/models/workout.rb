@@ -4,9 +4,8 @@ class Workout < ApplicationRecord
   has_many :exercises, through: :workout_exercises
   validates :name, presence: true
 
-  def self.filter_difficulty(level)
-    # if easy - return -> easy scope method
-  end
+  scope :done, -> {where(completed: true)}
+  scope :not_done, -> {where(completed: false)}
 
   def exercises_attributes=(e_hashes)
     e_hashes.values.each do |e_attributes|
