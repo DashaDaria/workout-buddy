@@ -11,8 +11,6 @@
     <p><%=f.text_field :name, placeholder: "Name your workout"%></p>
     Completed? <%=f.check_box :completed%>
 
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
 <h3>Add existing exercises:</h3>
   <%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%>
 

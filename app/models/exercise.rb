@@ -7,4 +7,5 @@ class Exercise < ApplicationRecord
   def reps_for(workout_id)
     workout_exercises.where(workout_id: workout_id).first.reps
   end
+
 end

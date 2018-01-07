@@ -6,6 +6,7 @@
     <th>Category</th>
     <th>Difficulty</th>
     <th>Length</th>
+    <th>Reps</th>
     <th>Instruction</th>
   </tr>
   <tr>
@@ -14,6 +15,7 @@
       <td><%=link_to e.category.name, category_path(e.category)%></td>
       <td><%=e.difficulty%></td>
       <td><%=e.length%></td>
+      <td><%=e.reps_for(@workout.id)%></td>
       <td><%=e.how%></td>
   </tr>
       <%end%>
