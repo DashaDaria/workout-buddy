@@ -4,5 +4,7 @@ class Exercise < ApplicationRecord
   has_many :workouts, through: :workout_exercises
   validates :difficulty, length: { in: 1..3 }
 
-
+  def reps_for(workout_id)
+    workout_exercises.where(workout_id: workout_id).first.reps
+  end
 end

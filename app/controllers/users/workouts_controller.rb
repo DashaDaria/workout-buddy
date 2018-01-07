@@ -11,7 +11,6 @@ class Users::WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
-    @exercises = Exercise.all
   end
 
   def create
@@ -27,14 +26,16 @@ class Users::WorkoutsController < ApplicationController
 
 private
   def workout_params
-  params.require(:workout).permit(:name, :completed, :exercise_ids => [],
-    exercises_attributes: [
-      :name,
-      :length,
-      :difficulty,
-      :category_id,
-      :how
-    ])
+    params.require(:workout).permit(:name, :completed, :exercise_ids => [],
+      exercises_attributes: [
+        :name,
+        :length,
+        :difficulty,
+        :category_id,
+        :how,
+        :reps
+      ]
+    )
   end
 
   def filter_workouts_view
@@ -46,5 +47,4 @@ private
       @workouts = @user.workouts
     end
   end
-
 end

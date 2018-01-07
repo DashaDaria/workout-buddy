@@ -9,8 +9,9 @@ class Workout < ApplicationRecord
 
   def exercises_attributes=(e_hashes)
     e_hashes.values.each do |e_attributes|
+      reps = e_attributes.delete(:reps)
       exercise = Exercise.find_or_create_by(e_attributes)
-      self.workout_exercises.build(:exercise => exercise)
+      self.workout_exercises.build(exercise: exercise, reps: reps)
     end
   end
 
@@ -32,5 +33,4 @@ class Workout < ApplicationRecord
   def duration
     self.exercises.map {|e| e.length}.sum
   end
-
 end

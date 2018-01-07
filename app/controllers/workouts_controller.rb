@@ -36,7 +36,8 @@ private
         :length,
         :difficulty,
         :category_id,
-        :how
+        :how,
+        :reps
       ])
     end
 
