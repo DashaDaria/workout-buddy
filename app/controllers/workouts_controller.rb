@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
   def show
     @workout = Workout.find(params[:id])
     @exercises = @workout.exercises
-  
+
   end
 
   def edit
@@ -13,7 +13,7 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    @workout.user_id = current_user.id
+    # @workout.user_id = current_user.id
     if @workout.update(workout_params)
       redirect_to user_workouts_path(current_user)
     else
@@ -29,17 +29,9 @@ class WorkoutsController < ApplicationController
     redirect_to user_workouts_path(current_user)
   end
 
-private
-    def workout_params
-    params.require(:workout).permit(:name, :completed, :exercise_ids => [],
-      exercises_attributes: [
-        :name,
-        :length,
-        :difficulty,
-        :category_id,
-        :how,
-        :reps
-      ])
-    end
+  private
 
+  def workout_params
+    params.require(:workout).permit(:name, :completed, :exercise_ids => [], exercises_attributes: [:reps])
+  end
 end

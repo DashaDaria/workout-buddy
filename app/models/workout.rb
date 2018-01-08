@@ -4,16 +4,17 @@ class Workout < ApplicationRecord
   has_many :exercises, through: :workout_exercises
   validates :name, presence: true
 
+  def exercises_attributes=(e_hashes)
+      e_hashes.values.each do |e_attributes|
+        reps = e_attributes.delete(:reps)
+        exercise = Exercise.find_or_create_by(e_attributes)
+        self.workout_exercises.build(exercise: exercise, reps: reps)
+      end
+    end
+
   scope :done, -> {where(completed: true)}
   scope :not_done, -> {where(completed: false)}
 
-  def exercises_attributes=(e_hashes)
-    e_hashes.values.each do |e_attributes|
-      reps = e_attributes.delete(:reps)
-      exercise = Exercise.find_or_create_by(e_attributes)
-      self.workout_exercises.build(exercise: exercise, reps: reps)
-    end
-  end
 
   def status
     self.completed ? "completed" : "not completed"
