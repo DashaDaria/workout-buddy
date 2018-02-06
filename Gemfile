@@ -13,6 +13,8 @@ gem 'omniauth-facebook'
 
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.21.0'
+gem 'rails_12factor'
+
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
