@@ -3,6 +3,10 @@ class WorkoutsController < ApplicationController
   def show
     @workout = Workout.find(params[:id])
     @exercises = @workout.exercises
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @workout, status: 200}
+    end
   end
 
   def edit

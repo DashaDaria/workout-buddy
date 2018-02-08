@@ -7,10 +7,10 @@ class ExercisesController < ApplicationController
 
   def show
     @exercise = Exercise.find(params[:id])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @exercise, status: 200}
+    end
   end
 
-  def body
-    @exercise = Exercise.find(params[:id])
-    render json: @exercise.to_json
-    end
 end
