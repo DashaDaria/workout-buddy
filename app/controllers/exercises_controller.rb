@@ -8,4 +8,9 @@ class ExercisesController < ApplicationController
   def show
     @exercise = Exercise.find(params[:id])
   end
+
+  def body
+    @exercise = Exercise.find(params[:id])
+    render plain: @exercise.how
+    end
 end
