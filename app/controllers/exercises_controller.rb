@@ -11,6 +11,6 @@ class ExercisesController < ApplicationController
 
   def body
     @exercise = Exercise.find(params[:id])
-    render plain: @exercise.how
+    render json: @exercise.to_json
     end
 end

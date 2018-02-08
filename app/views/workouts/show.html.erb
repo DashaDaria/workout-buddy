@@ -1,4 +1,6 @@
 <h1><%=@workout.id%> <%=@workout.name.upcase%> | <%=@workout.intensity%> | <%=@workout.duration%> sec</h1>
+<a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout</a>
+
 <h2>Exercises</h2>
 <table>
   <tr>
@@ -16,7 +18,7 @@
       <td><%=e.difficulty%></td>
       <td><%=e.length%></td>
       <td><%=e.reps_for(@workout.id)%></td>
-      <td><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
+      <td id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
   </tr>
       <%end%>
 </table><br>
@@ -27,8 +29,8 @@
 $(function () {
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
-    $.get("/exercises/" + id + "/body", function(data) {
-      alert(data);
+    $.getJSON("/exercises/" + id + "/body", function(data) {
+      $("#body-" + id).html(data["how"])
     });
   });
 });
