@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :workouts, only: [:show, :update, :destroy, :edit]
   resources :categories, only: [:show]
-  resources :exercises, only: [:index, :show]
+  resources :exercises
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
