@@ -5,11 +5,22 @@
  .bg {
     background-image: url("./run_track.jpeg");
     height: 100%;
-    // background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+footer.site-footer {
+   position: absolute;
+   opacity: 0.85;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #f1eeef;
+   color: black;
+   text-align: center;
+   padding-bottom: 1%;
+   padding-top: 1%;
+}
 //  table {
 //     font-family: arial, sans-serif;
 //     border-collapse: collapse;
