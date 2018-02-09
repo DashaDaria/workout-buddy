@@ -4,4 +4,5 @@ class WorkoutExerciseSerializer < ActiveModel::Serializer
   def category
     object.exercise.category.name
   end
+
 end

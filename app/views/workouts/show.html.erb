@@ -1,4 +1,4 @@
-<h1 class="wName"><%=@workout.name.upcase%> | <%=@workout.intensity%> | <%=@workout.duration%> sec</h1>
+<h1 class="wName"><%=@workout.name.upcase%></h1>
 <a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout</a>
 
 <h2>Exercises</h2>
@@ -13,12 +13,12 @@
   </tr>
   <tr>
     <%@exercises.each do |e|%>
-      <td><%=link_to e.name, exercise_path(e)%></td>
-      <td><%=link_to e.category.name, category_path(e.category)%></td>
-      <td><%=e.difficulty%></td>
-      <td><%=e.length%></td>
-      <td><%=e.reps_for(@workout.id)%></td>
-      <td id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
+      <td class="eName"><%=link_to e.name, exercise_path(e)%></td>
+      <td class="category"><%=link_to e.category.name, category_path(e.category)%></td>
+      <td class="difficulty"><%=e.difficulty%></td>
+      <td class="length"><%=e.length%></td>
+      <td class="reps"><%=e.reps_for(@workout.id)%></td>
+      <td class="how" id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
   </tr>
       <%end%>
 </table><br>
@@ -26,7 +26,7 @@
 <%=link_to "Edit", edit_workout_path%> | <%=link_to "Delete", workout_path, method: :delete %>
 
 <!-- jQUERY FOR MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)-->
-<!-- <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
@@ -35,7 +35,7 @@ $(function () {
     });
   });
 });
-</script> -->
+</script>
 
 <!-- jQUERY FOR NEXT WORKOUT LINK -->
 <script type="text/javascript" charset="utf-8">
@@ -44,6 +44,14 @@ $(function () {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/workouts/" + nextId + ".json", function(data) {
       $(".wName").text(data["name"]);
+      for(let i=0; i < workout_exercises.length; i++){
+        $(".eName").text(data["workout_exercises"][i]["name"]);
+        $(".category").text(data["workout_exercises"][i]["category"]);
+        $(".difficulty").text(data["workout_exercises"][i]["difficulty"]);
+        $(".length").text(data["workout_exercises"][i]["length"]);
+        $(".reps").text(data["workout_exercises"][i]["reps"]);
+        $(".how").text(data["workout_exercises"][i]["how"]);
+      }
       $(".js-next").attr("data-id", data["id"]);
     });
   });
