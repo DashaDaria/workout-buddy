@@ -1,4 +1,4 @@
-
+/////Next Exercise link on each show page////
 $(function () {
   $(".js-nextE").on("click", function() {
     var nextId = parseInt($(".js-nextE").attr("data-id")) + 1;
