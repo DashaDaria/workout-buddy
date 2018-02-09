@@ -2,6 +2,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ .bg {
+    background-image: url("./run_track.jpeg");
+    height: 100%;
+    // background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 //  table {
 //     font-family: arial, sans-serif;
 //     border-collapse: collapse;
