@@ -11,10 +11,7 @@
     <%=f.text_field :name, placeholder: "Name your workout"%><br><br>
     Completed? <%=f.check_box :completed%>
 
-    <h3>Add existing exercises:</h3>
-    <%= f.collection_check_boxes(:exercise_ids, Exercise.all, :id, :name)%>
-
-    <h3>Or create your own:</h3>
+    <h3>Add Exercise:</h3>
     <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
       <%=e_fields.text_field :name, placeholder: "Name your exercise" %>
       <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
