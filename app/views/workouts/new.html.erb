@@ -7,7 +7,7 @@
 <% end %>
 
 <h1>New Workout</h1>
-  <%=form_for(@workout, url: workouts_path) do |f|%>
+  <%=form_for @workout, :html => {class: "create_workout"} do |f|%>
     <%=f.text_field :name, placeholder: "Name your workout"%>
 
     <h4>Add Exercise:</h4>

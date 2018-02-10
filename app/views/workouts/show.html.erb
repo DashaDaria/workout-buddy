@@ -48,14 +48,14 @@ $(function () {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/workouts/" + nextId + ".json", function(data) {
       $(".wName").text(data["name"]);
-      for(let i=0; i < workout_exercises.length; i++){
-        $(".eName").text(data["workout_exercises"][i]["name"]);
-        $(".category").text(data["workout_exercises"][i]["category"]);
-        $(".difficulty").text(data["workout_exercises"][i]["difficulty"]);
-        $(".length").text(data["workout_exercises"][i]["length"]);
-        $(".reps").text(data["workout_exercises"][i]["reps"]);
-        $(".how").text(data["workout_exercises"][i]["how"]);
-      }
+
+        $(".eName").text(data["exercises"]["name"]);
+        $(".category").text(data["exercises"]["category"]);
+        $(".level").text(data["exercises"]["level"]);
+        $(".length").text(data["exercises"]["length"]);
+        $(".reps").text(data["exercises"]["reps"]);
+        $(".how").text(data["exercises"]["how"]);
+
       $(".js-next").attr("data-id", data["id"]);
     });
   });
