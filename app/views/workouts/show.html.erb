@@ -30,7 +30,7 @@
 <!-- link that when clicked - > remove hidden feild of form. -->
 <button type="button" id="showForm">Add Exercise</button>
 
-  <%= form_for @exercise, :html => {class: "add_exercise"}  do |f|%>
+  <%= form_for(@exercise, url: workout_exercises_path(@workout), html: {class: "add_exercise"}) do |f| %>
     <%=f.text_field :name, placeholder: "Name your exercise" %>
     <%=f.number_field :length, placeholder: "How many seconds?" %>
     <%=f.number_field :level, placeholder: "How hard? (1-3)" %>
