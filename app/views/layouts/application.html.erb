@@ -7,14 +7,16 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
 
+  <body>
+  <%= render 'layouts/header' %>
+  <div class="content">
     <% flash.each do |name, msg| %>
      <%= content_tag :div, msg, class: "alert alert-info" %>
-   <% end %>
+     <% end %>
 
     <%= yield %>
+  </div>
   </body>
   <footer class="site-footer">
     <span>created by <a href="https://github.com/DashaDaria" target="_blank">DashaDaria</a></span>

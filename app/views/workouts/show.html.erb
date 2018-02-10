@@ -2,7 +2,8 @@
 <a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout</a>
 
 <h2>Exercises</h2>
-<table>
+<table class="table">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Category</th>
@@ -11,6 +12,8 @@
     <th>Reps</th>
     <th>Instruction</th>
   </tr>
+</thead>
+<tbody>
   <tr>
     <%@exercises.each do |e|%>
       <td class="eName"><%=link_to e.name, exercise_path(e)%></td>
@@ -21,6 +24,7 @@
       <td class="how" id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
   </tr>
       <%end%>
+  <tbody>
 </table><br>
 
 <%=link_to "Edit", edit_workout_path%> | <%=link_to "Delete", workout_path, method: :delete %>

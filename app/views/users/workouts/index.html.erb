@@ -9,21 +9,25 @@
   <%= submit_tag "Filter"%><br><br>
 <%end%>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-    <th>Intensity</th>
-    <th>Duration</th>
-  </tr>
-  <tr>
-    <% @workouts.each do |workout| %>
-      <td><%=link_to workout.name, workout_path(workout)%></td>
-      <td><%=workout.status%></td>
-      <td><%=workout.intensity%></td>
-      <td><%=workout.duration%></td>
-  </tr>
-      <%end%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Intensity</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @workouts.each do |workout| %>
+        <td><%=link_to workout.name, workout_path(workout)%></td>
+        <td><%=workout.status%></td>
+        <td><%=workout.intensity%></td>
+        <td><%=workout.duration%></td>
+      </tr>
+        <%end%>
+  </tbody>
 </table>
 
 <p><%= link_to "New Workout", new_workout_path%></p>
