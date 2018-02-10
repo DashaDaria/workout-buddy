@@ -1,5 +1,5 @@
 <h1 class="wName"><%=@workout.name.upcase%></h1>
-<a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout</a>
+<a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout >></a>
 
 <h2>Exercises</h2>
 <table class="table table-hover">
@@ -27,37 +27,15 @@
   <tbody>
 </table><br>
 
-<%=link_to "Edit", edit_workout_path%> | <%=link_to "Delete", workout_path, method: :delete %>
+<!-- link that when clicked - > remove hidden feild of form. -->
+<button type="button" id="showForm">Add Exercise</button>
 
-<!-- jQUERY FOR MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)-->
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-more").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/exercises/" + id + ".json", function(data) {
-      $("#body-" + id).html(data["how"])
-    });
-  });
-});
-</script>
-
-<!-- jQUERY FOR NEXT WORKOUT LINK -->
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/workouts/" + nextId + ".json", function(data) {
-      $(".wName").text(data["name"]);
-
-        $(".eName").text(data["exercises"]["name"]);
-        $(".category").text(data["exercises"]["category"]);
-        $(".level").text(data["exercises"]["level"]);
-        $(".length").text(data["exercises"]["length"]);
-        $(".reps").text(data["exercises"]["reps"]);
-        $(".how").text(data["exercises"]["how"]);
-
-      $(".js-next").attr("data-id", data["id"]);
-    });
-  });
-});
-</script>
+  <%= form_for @exercise, :html => {class: "add_exercise"}  do |f|%>
+    <%=f.text_field :name, placeholder: "Name your exercise" %>
+    <%=f.number_field :length, placeholder: "How many seconds?" %>
+    <%=f.number_field :level, placeholder: "How hard? (1-3)" %>
+    <%=f.select :category, options_for_select([['upper body'], ['core'], ['lower body'], ['full body']])%><br><br>
+    <%=f.text_area :how, placeholder: "Instructions" %><br>
+    <%=f.number_field :reps, value: nil, min: 1, placeholder: "How many reps?" %><br><br>
+    <p><%= f.submit %></p>
+  <%end%>

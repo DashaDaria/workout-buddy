@@ -2,6 +2,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.add_exercise {
+  display: none;
+}
+
  .bg {
     background-image: url("./run_track.jpeg");
     height: 100%;

@@ -7,7 +7,7 @@
 <% end %>
 
 <h1>New Workout</h1>
-  <%=form_for @workout, :html => {class: "create_workout"} do |f|%>
+  <%=form_for @workout, :html => {class: "create_workout"}, :data => {user: @user.id} do |f|%>
     <%=f.text_field :name, placeholder: "Name your workout"%>
 
     <h4>Add Exercise:</h4>
@@ -22,3 +22,7 @@
 
   <%= f.submit %>
 <%end%>
+
+<div id="postResults">
+  <h2 id="workoutName"></h2>
+</div>

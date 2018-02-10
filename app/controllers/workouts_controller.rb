@@ -1,26 +1,28 @@
 class WorkoutsController < ApplicationController
 
+  def show
+    @workout = Workout.find(params[:id])
+    @exercises = @workout.exercises
+    @exercise = Exercise.new
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @workout, status: 200}
+    end
+  end
+
   def new
     @workout = Workout.new
+    @user = current_user
   end
 
   def create
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to workout_path(@workout)
+      render json: @workout, status: 201
     else
       flash[:notice] = "Cannot save, fix errors:"
       render 'new'
-    end
-  end
-
-  def show
-    @workout = Workout.find(params[:id])
-    @exercises = @workout.exercises
-    respond_to do |format|
-      format.html {render :show}
-      format.json {render json: @workout, status: 200}
     end
   end
 
