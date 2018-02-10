@@ -6,7 +6,7 @@
   <tr>
     <th>Name</th>
     <th>Category</th>
-    <th>Difficulty</th>
+    <th>Level</th>
     <th>Length</th>
     <th>Reps</th>
     <th>Instruction</th>
@@ -14,10 +14,10 @@
   <tr>
     <%@exercises.each do |e|%>
       <td class="eName"><%=link_to e.name, exercise_path(e)%></td>
-      <td class="category"><%=link_to e.category.name, category_path(e.category)%></td>
-      <td class="difficulty"><%=e.difficulty%></td>
+      <td class="category"><%=e.category%></td>
+      <td class="level"><%=e.level%></td>
       <td class="length"><%=e.length%></td>
-      <td class="reps"><%=e.reps_for(@workout.id)%></td>
+      <td class="reps"><%=e.reps%></td>
       <td class="how" id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
   </tr>
       <%end%>
