@@ -6,7 +6,7 @@ $(function () {
       $(".eName").text(data["name"]);
       $(".length").text(data["length"]);
       $(".how").text(data["how"]);
-      $(".category").text(data["category"]["name"]);
+      $(".category").text(data["category"]);
 
       $(".js-nextE").attr("data-id", data["id"]);
     });

@@ -1,4 +1,3 @@
 class ExerciseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :difficulty, :how, :length
-  belongs_to :category
+  attributes :id, :name, :level, :how, :length, :reps, :category
 end

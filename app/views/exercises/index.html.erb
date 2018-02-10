@@ -1,11 +1,7 @@
 <h1>Exercise List</h1>
 
-<%@categories.each do |category|%>
-  <%=link_to category.name.titleize, category_path(category)%> //
-<%end%>
-
 <ol>
   <% @exercises.each do |e| %>
-  <li><%= link_to e.name, e %> - <%=e.category.name%></li>
+  <li><%= link_to e.name, e %> - <%=e.category%></li>
   <%end%>
 </ol>
