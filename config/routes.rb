@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users do
-    resources :workouts, only: [:index, :new, :create], controller: 'users/workouts'
+    resources :workouts, only: [:index], controller: 'users/workouts'
   end
 
-  resources :workouts, only: [:show, :update, :destroy, :edit]
-  resources :categories, only: [:show]
+  resources :workouts, only: [:create, :new, :show, :update, :destroy, :edit]
+
   resources :exercises
 
   get '/signup', to: 'users#new'

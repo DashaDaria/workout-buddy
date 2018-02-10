@@ -2,7 +2,6 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = Exercise.all
-    @categories = Category.all
 
   end
 
@@ -15,7 +14,7 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    
+
   end
 
 end

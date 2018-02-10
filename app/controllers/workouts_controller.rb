@@ -6,7 +6,21 @@ class WorkoutsController < ApplicationController
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @workout, status: 200}
-      
+    end
+  end
+
+  def new
+    @workout = Workout.new
+  end
+
+  def create
+    @workout = Workout.new(workout_params)
+    @workout.user_id = current_user.id
+    if @workout.save
+      redirect_to user_workouts_path(current_user)
+    else
+      flash[:notice] = "Cannot save, fix errors:"
+      render 'new'
     end
   end
 
@@ -36,7 +50,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :completed,
+    params.require(:workout).permit(:name, :completed,:exercise_ids => [],
       exercises_attributes: [
             :name,
             :length,

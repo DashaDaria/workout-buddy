@@ -7,7 +7,7 @@
 <% end %>
 
 <h1>New Workout</h1>
-  <%=form_for(@workout, url: user_workouts_path) do |f|%>
+  <%=form_for(@workout, url: workouts_path) do |f|%>
     <%=f.text_field :name, placeholder: "Name your workout"%><br><br>
     Completed? <%=f.check_box :completed%>
 
@@ -15,8 +15,8 @@
     <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
       <%=e_fields.text_field :name, placeholder: "Name your exercise" %>
       <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
-      <%=e_fields.number_field :difficulty, placeholder: "How hard? (1-3)" %>
-      <%=e_fields.select :category_id, options_for_select([['upper body', 1.to_i], ['core', 2.to_i], ['lower body', 3], ['full body', 4]])%><br><br>
+      <%=e_fields.number_field :level, placeholder: "How hard? (1-3)" %>
+      <%=e_fields.text_field :category, placeholder: "Ex. core" %>
       <%=e_fields.text_area :how, placeholder: "Instructions" %><br>
       <%=e_fields.number_field :reps, value: nil, min: 1, placeholder: "How many reps?" %>
   <%end%>

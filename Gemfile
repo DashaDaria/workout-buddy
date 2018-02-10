@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'sqlite3'
 gem 'pry'
 gem 'bcrypt'
 gem 'dotenv-rails'

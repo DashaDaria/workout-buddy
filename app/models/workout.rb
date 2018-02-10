@@ -1,14 +1,12 @@
 class Workout < ApplicationRecord
   belongs_to :user
-  has_many :workout_exercises
-  has_many :exercises, through: :workout_exercises
+  has_many :exercises
   validates :name, presence: true
 
   def exercises_attributes=(e_hashes)
       e_hashes.values.each do |e_attributes|
-        reps = e_attributes.delete(:reps)
         exercise = Exercise.find_or_create_by(e_attributes)
-        self.workout_exercises.build(exercise: exercise, reps: reps)
+        self.exercises << exercise
       end
     end
 
@@ -21,7 +19,7 @@ class Workout < ApplicationRecord
   end
 
   def intensity
-    level = self.exercises.map {|e| e.difficulty }.sum
+    level = self.exercises.map {|e| e.level }.sum
     if level <= 3
       "easy"
     elsif level >= 9
