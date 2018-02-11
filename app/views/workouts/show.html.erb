@@ -2,7 +2,7 @@
 <a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout >></a>
 
 <h2>Exercises</h2>
-<table class="table table-hover">
+<table id="showExercisesTable" class="table table-hover">
   <thead class="thead-default">
   <tr>
     <th>Name</th>
@@ -27,10 +27,10 @@
   <tbody>
 </table><br>
 
-<!-- link that when clicked - > remove hidden feild of form. -->
+<!-- link that when clicked - > remove hidden field of form. -->
 <button type="button" id="showForm">Add Exercise</button>
 
-  <%= form_for(@exercise, url: workout_exercises_path(@workout), html: {class: "add_exercise"}) do |f| %>
+  <%= form_for(@exercise, url: workout_exercises_path(@workout), html: {class: "add_exercise"}, data: {workout: "#{@workout.id}"}) do |f| %>
     <%=f.text_field :name, placeholder: "Name your exercise" %>
     <%=f.number_field :length, placeholder: "How many seconds?" %>
     <%=f.number_field :level, placeholder: "How hard? (1-3)" %>

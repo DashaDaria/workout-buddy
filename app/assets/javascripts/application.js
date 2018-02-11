@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= bootstrap-sprockets
 //= require jquery_ujs
+//= bootstrap-sprockets
+//= require handlebars
+//= require_tree ./templates
 //= require_tree .
 //= require exercises
 //= require workout

@@ -1,14 +1,18 @@
 ////CREATE NEW WORKOUT/////
 $(function () {
-  $('form.create_workout').submit(function(event){
+  $('form.add_exercise').submit(function(event){
     event.preventDefault();
-    var user_id = $(this).data("user");
+    var workout_id = $(this).data("workout");
     var values = $(this).serialize();
-    var posting = $.post("/workouts", values);
+    var posting = $.post("/workouts/" + workout_id + "/exercises", values);
 
-    posting.done(function(data){
-      $("#workoutName").text(data["name"]);
-    })
+    posting.done(function(response){
+      exerciseRowHTML = HandlebarsTemplates['exercise_row']({
+        exercise: response
+      });
+      $("#js-inventroyTable tr:last").after(exerciseRowHTML);
+      $("#js-addForm").html("");
+    });
   });
 });
 

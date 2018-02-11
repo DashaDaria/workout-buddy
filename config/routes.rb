@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :workouts, only: [:create, :new, :show, :update, :destroy, :edit]
 
   resources :workouts, only: [:show] do
-    resources :exercises, only: [:index]
+    resources :exercises, only: [:index, :create,], controller: 'workouts/exercises'
 end
 
   resources :exercises, only: [:show]
