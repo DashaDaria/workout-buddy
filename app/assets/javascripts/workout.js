@@ -10,8 +10,7 @@ $(function () {
       exerciseRowHTML = HandlebarsTemplates['exercise_row']({
         exercise: response
       });
-      $("#js-inventroyTable tr:last").after(exerciseRowHTML);
-      $("#js-addForm").html("");
+      $("#js-exercisesTable tr:last").after(exerciseRowHTML);
     });
   });
 });
