@@ -9,10 +9,18 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Thank you for signing up!"
-      redirect_to user_workouts_path(@user)
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = "Input not valid"
       render 'new'
+    end
+  end
+
+  def show
+    if logged_in?
+      @user = current_user
+    else
+      redirect_to '/'
     end
   end
 

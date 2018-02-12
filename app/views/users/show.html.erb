@@ -1,4 +1,4 @@
-<!-- <h2>Track Your Progress</h2>
+<h2>Track Your Progress</h2>
 <p>Workouts completed: <%=@user.workouts.count{|w| w.completed == true}%></p>
 <p>Favorite exercise(s): <%= @user.favorite_exercise%></p>
 
@@ -7,9 +7,9 @@
   <%= label_tag "Filter by:" %>
   <%= select_tag :done, options_for_select([['completed'],['not completed']]), {include_blank: true}%>
   <%= submit_tag "Filter"%><br><br>
-<%end%> -->
+<%end%>
 
-<!-- <p><%= link_to "Show Exercises", user_workouts_path(@user), :class => "js-showWorkouts"%></p>
-<div id="js-workoutsTable"></div> -->
+<p><%= link_to "Show Workouts", user_workouts_path(@user), :class => "js-showWorkouts"%></p>
+<div id="js-workoutsTable"></div>
 
-<!-- <p><%= link_to "New Workout", new_workout_path%></p> -->
+<p><%= link_to "New Workout", new_workout_path%></p>

@@ -5,10 +5,7 @@ class Users::WorkoutsController < ApplicationController
       @user = current_user
       @workouts = @user.workouts
       # filter_workouts_view
-      respond_to do |format|
-        format.html {render :index}
-        format.json {render json: @workouts, status: 200}
-      end
+    render json: @workouts
     else
       redirect_to '/'
     end
