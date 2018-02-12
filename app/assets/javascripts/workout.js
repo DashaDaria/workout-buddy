@@ -51,13 +51,16 @@ $(function () {
     $.get("/workouts/" + nextId + ".json", function(data) {
       $(".wName").text(data["name"]);
 
-      for(i = 0; i < data["exercises"].length; i++){
+      for(let i = 0; i < data["exercises"].length; i++){
+        // debugger
+
         $(".eName").text(data["exercises"][i].name);
         $(".category").text(data["exercises"][i].category);
         $(".level").text(data["exercises"][i].level);
         $(".length").text(data["exercises"][i].length);
         $(".reps").text(data["exercises"][i].reps);
         $(".how").text(data["exercises"][i].how);
+
       };
       $(".js-next").attr("data-id", data["id"]);
     });

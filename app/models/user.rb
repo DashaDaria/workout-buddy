@@ -6,17 +6,12 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: { message: "has already been used"}
 
-  def favorite_exercise
+  def most_exercises
     if !self.workouts.empty?
-      e_array = self.workouts.all.map do |workout|
-              workout.exercises.map do |e|
-                e.name
-              end
-            end
-        names_only = e_array.flatten
-        names_only.max_by {|e| e_array.count(e)}
+      w_array = self.workouts.map { |w| w.exercises.count}
+      
     else
-      "no favorites yet!"
+      "no workouts yet!"
     end
   end
 end
