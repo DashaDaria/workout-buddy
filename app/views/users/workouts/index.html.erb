@@ -34,11 +34,12 @@
         var trHTML = '';
         for(i=0; i < data.length; i++) {
           var workout = data[i]
+          console.log(workout)
           trHTML +=
           '<tr><td>'
           + `<a href="/workouts/${workout.id}">`
           + workout.name
-          + '</a>'
+          + ' - 4 workouts</a>'
           + '</td><td>'
           + workout.status
           + '</td><td>'

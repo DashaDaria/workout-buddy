@@ -1,4 +1,4 @@
-////CREATE NEW WORKOUT/////
+////ADD AN EXERCISE TO AN EXISTING WORKOUT/////
 $(function () {
   $('form.add_exercise').submit(function(event){
     event.preventDefault();
@@ -32,9 +32,7 @@ $(function () {
     });
   });
 
-
-
-////MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)////
+////SHOW MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)////
 $(function () {
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
@@ -44,23 +42,19 @@ $(function () {
   });
 });
 
-////NEXT WORKOUT LINK////
+////LINK TO SHOW NEXT WORKOUT////
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/workouts/" + nextId + ".json", function(data) {
       $(".wName").text(data["name"]);
-
       for(let i = 0; i < data["exercises"].length; i++){
-        // debugger
-
-        $(".eName").text(data["exercises"][i].name);
-        $(".category").text(data["exercises"][i].category);
-        $(".level").text(data["exercises"][i].level);
-        $(".length").text(data["exercises"][i].length);
-        $(".reps").text(data["exercises"][i].reps);
-        $(".how").text(data["exercises"][i].how);
-
+        $(`.eName-${i}`).text(data["exercises"][i].name);
+        $(`.category-${i}`).text(data["exercises"][i].category);
+        $(`.level-${i}`).text(data["exercises"][i].level);
+        $(`.length-${i}`).text(data["exercises"][i].length);
+        $(`.reps-${i}`).text(data["exercises"][i].reps);
+        $(`.how-${i}`).text(data["exercises"][i].how);
       };
       $(".js-next").attr("data-id", data["id"]);
     });
