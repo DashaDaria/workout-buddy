@@ -1,4 +1,4 @@
-<table id="js-exercisesTable" class="table table-hover">
+<table id="exercises" class="table table-hover">
   <thead class="thead-default">
   <tr>
     <th>Name</th>
@@ -10,15 +10,15 @@
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <%@exercises.each do |e|%>
-      <td class="eName"><%=link_to e.name, exercise_path(e)%></td>
-      <td class="category"><%=e.category%></td>
-      <td class="level"><%=e.level%></td>
-      <td class="length"><%=e.length%></td>
-      <td class="reps"><%=e.reps%></td>
-      <td class="how" id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
+  {{#exercise}}
+  <tr id="tr-{{id}}">
+      <td><a href="/exercises/{{id}}" data-id="{{id}}">{{name}}</a></td>
+      <td>{{category}}</td>
+      <td>{{level}}</td>
+      <td>{{length}}</td>
+      <td>{{reps}}</td>
+      <td>{{how}}</td>
   </tr>
-      <%end%>
+    {{/exercise}}
   <tbody>
 </table><br>

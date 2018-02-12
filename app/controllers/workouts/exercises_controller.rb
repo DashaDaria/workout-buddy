@@ -1,4 +1,10 @@
 class Workouts::ExercisesController < ApplicationController
+  def index
+    @workout = Workout.find(params[:workout_id])
+    @exercises = @workout.exercises
+    
+  end
+
 
   def create
     @workout = Workout.find(params[:workout_id])

@@ -1,3 +1,18 @@
+////SHOW WORKOUT EXERCISES/////
+$(function (){
+  $(".js-exercises").on("click", function(event){
+    event.preventDefault();
+    var workout_id = $(this).data("workout");
+    $.get("workouts/" + workout_id + "/exercises", function(data){
+      exercisesTableHTML = HandlebarsTemplates['exercises_table']({
+        exercises: data
+      });
+      $('#js-exercisesTable').html(exercisesTableHTML);
+    })
+  })
+})
+
+
 ////CREATE NEW WORKOUT/////
 $(function () {
   $('form.add_exercise').submit(function(event){

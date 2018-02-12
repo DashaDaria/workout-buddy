@@ -1,0 +1,20 @@
+<table id="workouts" class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Intensity</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#workouts}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{status}}</td>
+      <td>{{intensity}}</td>
+      <td>{{duration}}</td>
+      </tr>
+    {{/workouts}}
+  </tbody>
+</table>

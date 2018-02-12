@@ -1,33 +1,9 @@
-<h1 class="wName"><%=@workout.name.upcase%></h1>
+<h1 id="js-workoutName"><%=@workout.name.upcase%></h1>
 <a href="#" class="js-next" data-id="<%= @workout.id %>">Next Workout >></a>
 
 <h2>Exercises</h2>
-<button class="js-inventory" data-vendor="<%= @vendor.id %>">Inventory</button>
-<table id="js-exercisesTable" class="table table-hover">
-  <thead class="thead-default">
-  <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Level</th>
-    <th>Length</th>
-    <th>Reps</th>
-    <th>Instruction</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <%@exercises.each do |e|%>
-      <td class="eName"><%=link_to e.name, exercise_path(e)%></td>
-      <td class="category"><%=e.category%></td>
-      <td class="level"><%=e.level%></td>
-      <td class="length"><%=e.length%></td>
-      <td class="reps"><%=e.reps%></td>
-      <td class="how" id="body-<%= e.id %>"><%=truncate e.how%> <button class="js-more" data-id="<%= e.id %>">More</button></td>
-  </tr>
-      <%end%>
-  <tbody>
-</table><br>
-
+<button class="js-exercises" data-workout="<%= @workout.id %>">Show All</button>
+<div id="js-exercisesTable"></div><br>
 
 <!-- link that when clicked - > remove hidden field of form. -->
 <button type="button" id="showForm">Add Exercise</button>

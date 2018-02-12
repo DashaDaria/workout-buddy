@@ -1,4 +1,5 @@
 class WorkoutSerializer < ActiveModel::Serializer
-  attributes :id, :name, :status
+  attributes :id, :name, :status, :intensity, :duration
+
   has_many :exercises
 end
