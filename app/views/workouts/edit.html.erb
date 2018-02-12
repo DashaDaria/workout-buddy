@@ -8,7 +8,7 @@
 
 <h1>Edit Workout</h1>
   <%=form_for(@workout, url: workout_path(@workout)) do |f|%>
-    <%=f.text_field :name, placeholder: "Name your workout"%><br><br>
-    <small>Are you done YET? <%=f.check_box :completed%></small><br><br>
+    <%=f.text_field :name, placeholder: "Name your workout"%> <em> ...hope it's a better name now...</em><br><br>
+    <small class="lead">Are you done <strong>YET?</strong> <%=f.check_box :completed%></small><br><br>
     <%=f.submit%>
 <%end%>

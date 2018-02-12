@@ -34,7 +34,7 @@ $(function () {
 
 
 
-////jQUERY FOR MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)////
+////MORE TEXT FOR EXERCISE INSTRUCTIONS (HOW)////
 $(function () {
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
@@ -44,20 +44,21 @@ $(function () {
   });
 });
 
-////jQUERY FOR NEXT WORKOUT LINK////
+////NEXT WORKOUT LINK////
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/workouts/" + nextId + ".json", function(data) {
       $(".wName").text(data["name"]);
 
-        $(".eName").text(data["exercises"]["name"]);
-        $(".category").text(data["exercises"]["category"]);
-        $(".level").text(data["exercises"]["level"]);
-        $(".length").text(data["exercises"]["length"]);
-        $(".reps").text(data["exercises"]["reps"]);
-        $(".how").text(data["exercises"]["how"]);
-
+      for(i = 0; i < data["exercises"].length; i++){
+        $(".eName").text(data["exercises"][i].name);
+        $(".category").text(data["exercises"][i].category);
+        $(".level").text(data["exercises"][i].level);
+        $(".length").text(data["exercises"][i].length);
+        $(".reps").text(data["exercises"][i].reps);
+        $(".how").text(data["exercises"][i].how);
+      };
       $(".js-next").attr("data-id", data["id"]);
     });
   });
