@@ -35,7 +35,9 @@
           var workout = data[i]
           trHTML +=
           '<tr><td>'
+          + `<a href="/workouts/${workout.id}">`
           + workout.name
+          + '</a>'
           + '</td><td>'
           + workout.status
           + '</td><td>'
@@ -45,6 +47,9 @@
           + '</td></tr>';
         }
         $('#wBody').append(trHTML);
+      },
+      error: function(req, status, err){
+        console.log('Something went wrong', status, err);
       }
     })
   }())
