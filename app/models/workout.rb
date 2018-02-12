@@ -30,6 +30,7 @@ class Workout < ApplicationRecord
   end
 
   def duration
-    self.exercises.map {|e| e.length * e.reps}.sum
+    seconds = self.exercises.map {|e| e.length * e.reps}.sum
+    Time.at(seconds).utc.strftime("%M:%S")
   end
 end
