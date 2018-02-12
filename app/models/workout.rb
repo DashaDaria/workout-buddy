@@ -30,6 +30,6 @@ class Workout < ApplicationRecord
   end
 
   def duration
-    self.exercises.map {|e| e.length}.sum
+    self.exercises.map {|e| e.length * e.reps}.sum
   end
 end

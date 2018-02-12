@@ -1,9 +1,9 @@
 class WorkoutsController < ApplicationController
 
   def show
-    @workout = Workout.find(params[:id])
+    @workout   = Workout.find(params[:id])
     @exercises = @workout.exercises
-    @exercise = Exercise.new
+    @exercise  = Exercise.new
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @workout, status: 200}

@@ -18,16 +18,34 @@
       <th>Duration</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <% @workouts.each do |workout| %>
-        <td><%=link_to workout.name, workout_path(workout)%></td>
-        <td><%=workout.status%></td>
-        <td><%=workout.intensity%></td>
-        <td><%=workout.duration%></td>
-      </tr>
-        <%end%>
+  <tbody id="wBody">
   </tbody>
 </table>
 
 <p><%= link_to "New Workout", new_workout_path%></p>
+
+<script type="text/javascript">
+  $(function() {
+    $.ajax({
+      url: window.location.pathname + '.json',
+      method: 'get',
+      success: function(data) {
+        var trHTML = '';
+        for(i=0; i < data.length; i++) {
+          var workout = data[i]
+          trHTML +=
+          '<tr><td>'
+          + workout.name
+          + '</td><td>'
+          + workout.status
+          + '</td><td>'
+          + workout.intensity
+          + '</td><td>'
+          + workout.duration
+          + '</td></tr>';
+        }
+        $('#wBody').append(trHTML);
+      }
+    })
+  }())
+</script>

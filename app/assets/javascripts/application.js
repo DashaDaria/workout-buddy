@@ -16,5 +16,3 @@
 //= require handlebars
 //= require_tree ./templates
 //= require_tree .
-//= require exercises
-//= require workout
