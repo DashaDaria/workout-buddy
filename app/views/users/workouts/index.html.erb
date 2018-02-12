@@ -16,6 +16,7 @@
       <th>Status</th>
       <th>Intensity</th>
       <th>Duration</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody id="wBody">
@@ -44,7 +45,11 @@
           + workout.intensity
           + '</td><td>'
           + workout.duration
-          + '</td></tr>';
+          + '</td><td>'
+          + `<a href="/workouts/${workout.id}/edit">`
+          + "Edit"
+          + '</a>'
+          + '</td></tr>'
         }
         $('#wBody').append(trHTML);
       },

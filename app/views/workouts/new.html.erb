@@ -13,16 +13,13 @@
     <h4>Add Exercise:</h4>
     <%=f.fields_for :exercises, Exercise.new do |e_fields| %>
       <%=e_fields.text_field :name, placeholder: "Name your exercise" %>
-      <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
-      <%=e_fields.number_field :level, placeholder: "How hard? (1-3)" %>
       <%=e_fields.select :category, options_for_select([['upper body'], ['core'], ['lower body'], ['full body']])%><br><br>
-      <%=e_fields.text_area :how, placeholder: "Instructions" %><br>
-      <%=e_fields.number_field :reps, value: nil, min: 1, placeholder: "How many reps?" %><br><br>
-  <%end%>
 
+      <%=e_fields.number_field :length, placeholder: "How many seconds?" %>
+      <%=e_fields.number_field :reps, placeholder: "How many reps?" %>
+      <%=e_fields.number_field :level, placeholder: "How hard? (1-3)" %><br><br>
+
+      <%=e_fields.text_area :how, placeholder: "Instructions" %><br>
+  <%end%>
   <%= f.submit %>
 <%end%>
-
-<div id="postResults">
-  <h2 id="workoutName"></h2>
-</div>

@@ -3,7 +3,6 @@ class WorkoutsController < ApplicationController
   def show
     @workout   = Workout.find(params[:id])
     @exercises = @workout.exercises
-    @exercise  = Exercise.new
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @workout, status: 200}
@@ -38,9 +37,8 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    # @workout.user_id = current_user.id
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout)
+      redirect_to user_workouts_path(current_user)
     else
       flash[:notice] = "Cannot save, fix errors:"
       render 'edit'
