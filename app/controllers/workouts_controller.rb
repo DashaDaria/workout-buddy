@@ -19,7 +19,12 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      render json: @workout, status: 201
+      @exercises = @workout.exercises
+      @exercise  = Exercise.new
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @workout, status: 201}
+      end
     else
       flash[:notice] = "Cannot save, fix errors:"
       render 'new'
