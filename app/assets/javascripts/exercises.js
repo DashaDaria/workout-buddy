@@ -3,12 +3,12 @@ $(function () {
   $(".js-nextE").on("click", function() {
     var nextId = parseInt($(".js-nextE").attr("data-id")) + 1;
     $.get("/exercises/" + nextId + ".json", function(data) {
-      const newExc = new Exercise(data.name, data.how, data.category, data.length)
+      const newExc = new Exercise(data.name, data.length, data.how, data.category)
 
       newExc.formatName()
+      newExc.formatLength()
       newExc.formatHow()
       newExc.formatCategory()
-      newExc.formatLength()
 
       $(".js-nextE").attr("data-id", data["id"]);
     });
@@ -17,15 +17,19 @@ $(function () {
 
 /////EXERCISES CONSTRUCTOR//////
 class Exercise {
-  constructor(name, how, category, length){
+  constructor(name, length, how, category){
     this.name = name;
+    this.length = length;
     this.how = how;
     this.category = category;
-    this.length = length;
   }
 
   formatName() {
     $(".eName").text(this.name)
+  }
+  formatLength() {
+    let sec = " seconds | "
+    $(".length").text((this.length) + sec);
   }
   formatHow() {
     $(".how").text(this.how)
@@ -33,7 +37,5 @@ class Exercise {
   formatCategory() {
     $(".category").text(this.category)
   }
-  formatLength() {
-    $(".length").text(this.length)
-  }
+
 }

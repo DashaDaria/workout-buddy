@@ -19,7 +19,7 @@ $(function () {
       <td>${exercise.how}</td>
       </tr>`
       $('#js-exercisesTable tr:last').after(trHTML);
-      $(".add_exercise").html("");
+      $(".add_exercise").toggle();
       });
     });
   });
