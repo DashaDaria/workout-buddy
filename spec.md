@@ -1,24 +1,16 @@
-# Specifications for the Rails Assessment
+# Specifications for the Rails with jQuery Assessment
 
 Specs:
-- [x] Using Ruby on Rails for the project
-- [x] Include at least one has_many relationship. User has many workouts.
-- [x] Include at least one belongs_to relationship. Workout belongs to User.
-- [x] Include at least one has_many through relationship. Workout has many exercises through workout_exercise and vice versa.
-- [x] The "through" part of the has_many through includes at least one user submittable attribute. Exercise_attributes.
-- [x] Include reasonable validations for simple model objects. User ad workout have simple validations.
-- [x] Include a class level ActiveRecord scope method. Scoping for completed exercises.
-- [x] Include a nested form writing to an associated model using a custom attribute writer. New workout for current_user.
-- [x] Include signup
-- [x] Include login
-- [x] Include logout
-- [x] Include third party signup/login (OmniAuth w/Facebook)
-- [x] Include nested resource show or index (URL e.g. users/2/recipes). User/id/workouts
-- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients). User/id/workouts/new
-- [x] Include form display of validation errors (form URL e.g. /recipes/new). Included field with errors.
+- [x] Use jQuery for implementing new requirements
+- [x] Include a show resource(exercise pages, workout pages) rendered using jQuery and an Active Model Serialization JSON backend.
+- [x] Include an index resource (workouts) rendered using jQuery and an Active Model Serialization JSON backend.
+- [ x] Include at least one has_many relationship (workout has many exercises) in information rendered via JSON and appended to the DOM.
+- [x] Use your Rails API and a form to create a resource and render the response without a page refresh.(create new exercise)
+- [x] Translate JSON responses into js model objects.(exercise object)
+- [x] At least one of the js model objects must have at least one method added by your code to the prototype.(format text methods)
 
-Confirm:
-- [x] The application is pretty DRY
-- [x] Limited logic in controllers
-- [x] Views use helper methods if appropriate
-- [x] Views use partials if appropriate
+Confirm
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+- [x] You don't include changes in a commit that aren't related to the commit message
