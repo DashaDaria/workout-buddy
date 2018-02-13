@@ -10,22 +10,14 @@ $(function () {
       var exercise = data
       var trHTML = '';
       trHTML +=
-      '<tr><td>'
-      + `<a href="/exercises/${exercise.id}">`
-      + exercise.name
-      + '</a>'
-      + '</td><td>'
-      + exercise.category
-      + '</td><td>'
-      + exercise.level
-      + '</td><td>'
-      + exercise.length
-      + '</td><td>'
-      + exercise.reps
-      + '</td><td>'
-      + exercise.how
-      + '</td></tr>'
-
+      `<tr>
+      <td><a href="/exercises/${exercise.id}">${exercise.name}</a></td>
+      <td>${exercise.category}</td>
+      <td>${exercise.level}</td>
+      <td>${exercise.length}</td>
+      <td>${exercise.reps}</td>
+      <td>${exercise.how}</td>
+      </tr>`
       $('#js-exercisesTable tr:last').after(trHTML);
       $(".add_exercise").html("");
       });

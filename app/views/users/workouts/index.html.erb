@@ -1,13 +1,5 @@
 <h2>Track Your Progress</h2>
 <p>Workouts completed: <%=@user.workouts.count{|w| w.completed == true}%></p>
-<p>Workout with most exercises: <%= @user.most_exercises%></p>
-
-<!-- <h2>Your Workouts:</h2>
-<%=form_tag(user_workouts_path(current_user), method: 'get') do%>
-  <%= label_tag "Filter by:" %>
-  <%= select_tag :done, options_for_select([['completed'],['not completed']]), {include_blank: true}%>
-  <%= submit_tag "Filter"%><br><br>
-<%end%> -->
 
 <table class="table table-hover">
   <thead class="thead-default">
@@ -34,23 +26,13 @@
         var trHTML = '';
         for(i=0; i < data.length; i++) {
           var workout = data[i]
-          console.log(workout)
-          trHTML +=
-          '<tr><td>'
-          + `<a href="/workouts/${workout.id}">`
-          + workout.name
-          + ' - 4 workouts</a>'
-          + '</td><td>'
-          + workout.status
-          + '</td><td>'
-          + workout.intensity
-          + '</td><td>'
-          + workout.duration
-          + '</td><td>'
-          + `<a href="/workouts/${workout.id}/edit">`
-          + "Edit"
-          + '</a>'
-          + '</td></tr>'
+          trHTML += `<tr>
+          <td><a href="/workouts/${workout.id}">${workout.name} | ${workout.exercises.length} exercises</a></td>
+          <td>${workout.status}</td>
+          <td>${workout.intensity}</td>
+          <td>${workout.duration}</td>
+          <td><a href="/workouts/${workout.id}/edit">Edit</a></td>
+          </tr>`
         }
         $('#wBody').append(trHTML);
       },
